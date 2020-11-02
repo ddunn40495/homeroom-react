@@ -58,18 +58,14 @@ const TeacherAssignments = (props) => {
   };
   return (
     <Fragment>
-      <h1>New Assignment</h1>
+      <h1>Assignments</h1>
       <div className='row'>
         <div className='col'>
           <div class='card'>
             <div class='card-body'>
               <h4 class='card-title'>
-                <a>Teacher Name</a>
+                <a>Welcome {props.info.teacher_first_name} </a>
               </h4>
-              <p class='card-text'>{props.firstname}</p>
-              <a href='#' class='btn btn-primary'>
-                Button
-              </a>
             </div>
           </div>
         </div>
@@ -147,11 +143,38 @@ const TeacherAssignments = (props) => {
             </div>
           </div>
         </div>
+        <div className='col'>
+          <div className='card'>
+            <div class='card-body'>
+              <div class='table-responsive'>
+                <table class='table table-hover text-nowrap'>
+                  <thead>
+                    <tr>
+                      <th scope='col'></th>
+                      <th scope='col'>Course Name</th>
+                      <th scope='col'>Class name</th>
+
+                      <th scope='col'>Subject</th>
+                      <th scope='col'>Teacher</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <th>{props.classList[0].course_name}</th>
+                      <td>{props.classList[0].course_instance_name}</td>
+                      <td>{props.classList[0].course_instance_period}</td>
+                      <td>{props.classList[0].department_name}</td>
+
+                      <td>{props.classList[0].teacher_first_name}</td>
+                      <td>{props.classList[0].teacher_last_name}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-
-      <Link to='/login/teacher'> Login</Link>
-
-      <Link to='/'> Home</Link>
     </Fragment>
   );
 };

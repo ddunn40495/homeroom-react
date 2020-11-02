@@ -1,9 +1,9 @@
-import React, { useState, Fragment } from "react";
+import React, { useState, Fragment, useEffect } from "react";
 import { Link } from "react-router-dom";
 
 import { newCourse, newClass } from "../../apis/url";
 
-const TeacherClasses = (props) => {
+const TeacherAdmin = (props) => {
   /* State */
 
   const [inputs, setInputs] = useState({
@@ -90,9 +90,13 @@ const TeacherClasses = (props) => {
       `This is Teacher ID that is being submitted on the POST route to make a new class ====================${teacher_id}==============`
     );
     console.log(props.myInfo);
-    console.log(props.theTeachers.rows);
+    console.log(props.theTeachers);
     console.log(props.courseList);
   };
+
+  useEffect(() => {
+    props.refresh();
+  }, []);
 
   return (
     <Fragment>
@@ -101,12 +105,17 @@ const TeacherClasses = (props) => {
         <div className='col'>
           <div class='card'>
             <div class='card-body'>
-              <h4 class='card-title'>Teacher Name</h4>
-              <p class='card-text'>{props.firstname}</p>
+              <h4 class='card-title'>
+                {props.myInfo.teacher_first_name}{" "}
+                {props.myInfo.teacher_last_name}'s Admin Portal
+              </h4>
+              <button className='btn btn-info' onClick={logInputs}>
+                Admin Settings
+              </button>
             </div>
           </div>
         </div>
-        <button onClick={logInputs}>LOG</button>
+
         <div className='col'>
           <div class='card'>
             <div class='card-body'>
@@ -171,11 +180,11 @@ const TeacherClasses = (props) => {
                       <option value='' disabled selected>
                         Choose Course
                       </option>
-                      {/* {props.courseList.map((course) => (
+                      {props.courseList.map((course) => (
                         <option key={course.course_id} value={course.course_id}>
                           {course.course_name}
                         </option>
-                      ))} */}
+                      ))}
                     </select>
                   </div>
                 </div>
@@ -191,14 +200,14 @@ const TeacherClasses = (props) => {
                       <option disabled selected>
                         Choose Teacher
                       </option>
-                      {/* {props.theTeachers.rows.map((teacher) => (
+                      {props.theTeachers.map((teacher) => (
                         <option
                           key={teacher.teacher_id}
                           value={teacher.teacher_id}
                         >
                           {teacher.teacher_first_name}
                         </option>
-                      ))} */}
+                      ))}
                     </select>
                   </div>
                 </div>
@@ -233,12 +242,8 @@ const TeacherClasses = (props) => {
           </div>
         </div>
       </div>
-
-      <Link to='/login/teacher'> Login</Link>
-
-      <Link to='/'> Home</Link>
     </Fragment>
   );
 };
 
-export default TeacherClasses;
+export default TeacherAdmin;

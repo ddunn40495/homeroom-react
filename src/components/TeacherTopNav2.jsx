@@ -22,7 +22,7 @@ const TeacherTopNav2 = (props) => {
             <Link to='/teacher/assignments'>Assignments</Link>
           </li>
           <li className='tab nav-item'>
-            <Link to='/teacher/assignments'>Grades</Link>
+            <Link to='/teacher/grades'>Grades</Link>
           </li>
           <li className='tab nav-item'>
             <Link to='/teacher/students'>Students</Link>

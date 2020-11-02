@@ -8,7 +8,7 @@ import {
 } from "react-router-dom";
 import { auth } from "./apis/url";
 import "./App.css";
-
+import $ from 'jquery'; 
 import "react-toastify/dist/ReactToastify.css";
 import { toast } from "react-toastify";
 import Testdb from "./containers/Test";
@@ -69,7 +69,6 @@ function App() {
               !isAuthenticated ? (
                 <StudentLogin
                   {...props}
-                  auth={isAuthenticated}
                   auth={isAuthenticated}
                   toogleAuth={toogleAuth}
                 />

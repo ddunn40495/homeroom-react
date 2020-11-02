@@ -18,11 +18,13 @@ import {
 import TeacherNav from "../../components/TeacherNav";
 import TeacherSideNav from "../../components/TeacherSideNav";
 import TeacherHome from "./TeacherHome";
-import TeacherClasses from "./TeacherClasses";
+import TeacherClasses from "./TeacherAdmin";
 import TeacherTopNav1 from "../../components/TeacherTopNav1";
 import TeacherTopNav2 from "../../components/TeacherTopNav2";
 import TeacherAssignments from "./TeacherAssignments";
 import TeacherGrades from "./TeacherGrades";
+import TeacherStudents from "./TeacherStudents";
+import TeacherAdmin from "./TeacherAdmin";
 const TeacherDash = ({ toogleAuth }) => {
   /* State */
   const [teacher_first_name, setFirstName] = useState("");
@@ -49,26 +51,26 @@ const TeacherDash = ({ toogleAuth }) => {
       });
 
       const response = await res.json();
-      console.log(response.rows);
+      console.log(response.rows[0]);
       console.log(teacherDashboard);
       console.log(response.rows[0].teacher_id);
-      setTeacherInfo(response.rows);
+      setTeacherInfo(response.rows[0]);
       setFirstName(response.rows[0].teacher_first_name);
-      setLastName(response[0].teacher_last_name);
-      setUsername(response[0].teacher_user_name);
-      setEmail(response[0].teacher_email);
+      setLastName(response.rows[0].teacher_last_name);
+      setUsername(response.rows[0].teacher_user_name);
+      setEmail(response.rows[0].teacher_email);
       setTeacherId(response.rows[0].teacher_id);
 
       /*  */
       const res2 = await fetch(Teachers, {
-        method: "POST",
+        method: "GET",
         headers: { token: localStorage.token },
       });
 
       const teacherRoster = await res2.json();
       console.log(teacherRoster.rows);
       console.log(Teachers);
-      setallTeachers(teacherRoster);
+      setallTeachers(teacherRoster.rows);
 
       /*  */
     } catch (err) {
@@ -83,7 +85,7 @@ const TeacherDash = ({ toogleAuth }) => {
   const getCourses = async () => {
     try {
       const res = await fetch(Courses, {
-        method: "POST",
+        method: "GET",
         headers: { token: localStorage.token },
       });
 
@@ -96,7 +98,7 @@ const TeacherDash = ({ toogleAuth }) => {
 
       /*  */
       const res2 = await fetch(Classes, {
-        method: "POST",
+        method: "GET",
         headers: { token: localStorage.token },
       });
 
@@ -105,11 +107,6 @@ const TeacherDash = ({ toogleAuth }) => {
       console.log(response2);
       setAllClasses(response2.rows);
 
-      console.log(Classes);
-      /*  */
-      /*  */
-
-      console.log(teacherId);
       // const res3 = await fetch(onlyMyClasses, {
       //   method: "POST",
       //   headers: { token: localStorage.token },
@@ -134,7 +131,7 @@ const TeacherDash = ({ toogleAuth }) => {
   const getDepartments = async () => {
     try {
       const res = await fetch(Departments, {
-        method: "POST",
+        method: "GET",
         headers: { token: localStorage.token },
       });
 
@@ -184,119 +181,138 @@ const TeacherDash = ({ toogleAuth }) => {
               myId={teacherId}
               logout={logout}
               firstname={teacher_first_name}
+              myInfo={teacherInfo}
             />
           </div>
 
           <div className='col-md-10'>
-            <div className='row'>
-              <TeacherTopNav1 myId={teacherId} firstname={teacher_first_name} />
-              <TeacherTopNav2 myId={teacherId} firstname={teacher_first_name} />
-            </div>
-            <div className='row'>
-              <Switch>
-                <Route
-                  exact
-                  path='/teacher'
-                  render={(props) => (
-                    <TeacherHome
+            <Switch>
+              <Route
+                exact
+                path='/teacher'
+                render={(props) => (
+                  <TeacherHome
+                    {...props}
+                    subjects={allDepartments}
+                    myId={teacherId}
+                    firstname={teacher_first_name}
+                    info={teacherInfo}
+                    myInfo={teacherInfo}
+                    courseList={allCourses}
+                    classList={allClasses}
+                    myclassList={myClasses}
+                    theTeachers={allTeachers}
+                  />
+                )}
+              />
+              {/* <Route
+                exact
+                path='/teacher/classes'
+                render={(props) =>
+                  !props.auth ? (
+                    <TeacherClasses
                       {...props}
-                      subjects={allDepartments}
                       myId={teacherId}
-                      firstname={teacher_first_name}
+                      subjects={allDepartments}
+                      myInfo={teacherInfo}
+                      courseList={allCourses}
+                      classList={allClasses}
+                      myclassList={myClasses}
+                      theTeachers={allTeachers}
+                      toogleAuth={toogleAuth}
+                    />
+                  ) : (
+                    <Redirect to='/login/teacher' />
+                  )
+                }
+              /> */}
+              <Route
+                exact
+                path='/teacher/assignments'
+                render={(props) =>
+                  !props.auth ? (
+                    <TeacherAssignments
+                      {...props}
+                      myId={teacherId}
+                      subjects={allDepartments}
                       info={teacherInfo}
                       courseList={allCourses}
                       classList={allClasses}
                       myclassList={myClasses}
                       theTeachers={allTeachers}
+                      toogleAuth={toogleAuth}
                     />
-                  )}
-                />
-                <Route
-                  exact
-                  path='/teacher/classes'
-                  render={(props) =>
-                    !props.auth ? (
-                      <TeacherClasses
-                        {...props}
-                        myId={teacherId}
-                        subjects={allDepartments}
-                        info={teacherInfo}
-                        courseList={allCourses}
-                        classList={allClasses}
-                        myclassList={myClasses}
-                        theTeachers={allTeachers}
-                        toogleAuth={toogleAuth}
-                      />
-                    ) : (
-                      <Redirect to='/login/teacher' />
-                    )
-                  }
-                />
-                <Route
-                  exact
-                  path='/teacher/assignments'
-                  render={(props) =>
-                    !props.auth ? (
-                      <TeacherAssignments
-                        {...props}
-                        myId={teacherId}
-                        subjects={allDepartments}
-                        info={teacherInfo}
-                        courseList={allCourses}
-                        classList={allClasses}
-                        myclassList={myClasses}
-                        theTeachers={allTeachers}
-                        toogleAuth={toogleAuth}
-                      />
-                    ) : (
-                      <Redirect to='/login/teacher' />
-                    )
-                  }
-                />
-                <Route
-                  exact
-                  path='/teacher/grades'
-                  render={(props) =>
-                    !props.auth ? (
-                      <TeacherGrades
-                        {...props}
-                        myId={teacherId}
-                        subjects={allDepartments}
-                        info={teacherInfo}
-                        courseList={allCourses}
-                        classList={allClasses}
-                        myclassList={myClasses}
-                        theTeachers={allTeachers}
-                        toogleAuth={toogleAuth}
-                      />
-                    ) : (
-                      <Redirect to='/login/teacher' />
-                    )
-                  }
-                />
-                <Route
-                  exact
-                  path='/teacher/students'
-                  render={(props) =>
-                    !props.auth ? (
-                      <TeacherClasses
-                        {...props}
-                        myId={teacherId}
-                        subjects={allDepartments}
-                        info={teacherInfo}
-                        courseList={allCourses}
-                        classList={allClasses}
-                        theTeachers={allTeachers}
-                        myclassList={myClasses}
-                        toogleAuth={toogleAuth}
-                      />
-                    ) : (
-                      <Redirect to='/login/teacher' />
-                    )
-                  }
-                />
-              </Switch>
-            </div>
+                  ) : (
+                    <Redirect to='/login/teacher' />
+                  )
+                }
+              />
+              <Route
+                exact
+                path='/teacher/grades'
+                render={(props) =>
+                  !props.auth ? (
+                    <TeacherGrades
+                      {...props}
+                      myId={teacherId}
+                      subjects={allDepartments}
+                      info={teacherInfo}
+                      courseList={allCourses}
+                      classList={allClasses}
+                      myclassList={myClasses}
+                      theTeachers={allTeachers}
+                      toogleAuth={toogleAuth}
+                    />
+                  ) : (
+                    <Redirect to='/login/teacher' />
+                  )
+                }
+              />
+              <Route
+                exact
+                path='/teacher/students'
+                render={(props) =>
+                  !props.auth ? (
+                    <TeacherStudents
+                      {...props}
+                      myId={teacherId}
+                      subjects={allDepartments}
+                      info={teacherInfo}
+                      myInfo={teacherInfo}
+                      courseList={allCourses}
+                      classList={allClasses}
+                      theTeachers={allTeachers}
+                      myclassList={myClasses}
+                      toogleAuth={toogleAuth}
+                    />
+                  ) : (
+                    <Redirect to='/login/teacher' />
+                  )
+                }
+              />
+              <Route
+                exact
+                path='/teacher/admin'
+                render={(props) =>
+                  !props.auth ? (
+                    <TeacherAdmin
+                      {...props}
+                      myId={teacherId}
+                      subjects={allDepartments}
+                      myInfo={teacherInfo}
+                      courseList={allCourses}
+                      classList={allClasses}
+                      myclassList={myClasses}
+                      theTeachers={allTeachers}
+                      toogleAuth={toogleAuth}
+                      refresh={getCourses}
+                    />
+                  ) : (
+                    <Redirect to='/login/teacher' />
+                  )
+                }
+              />
+            </Switch>
           </div>
         </div>
       </Router>

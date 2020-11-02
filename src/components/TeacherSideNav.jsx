@@ -1,12 +1,13 @@
 import React, { Fragment, useEffect, useState } from "react";
 import { toast } from "react-toastify";
+import { Link } from "react-router-dom";
 
 const TeacherSideNav = (props) => {
   return (
     <Fragment>
       <div
         id='full-screen-example'
-        className='sidenav my-side fixed mdb-sidenav bg-light'
+        className=' my-side fixed mdb-sidenav --bs-light'
         data-color='dark'
         data-mode='side'
         data-hidden='false'
@@ -15,141 +16,76 @@ const TeacherSideNav = (props) => {
         <div className='mt-4'>
           <div id='header-content' className='pl-3'>
             <h4>
-              <span>{props.firstname}</span>
+              <Link to='/teacher'>
+                <span>
+                  {props.myInfo.teacher_first_name}{" "}
+                  {props.myInfo.teacher_last_name}
+                </span>
+              </Link>
             </h4>
-            <p>ann_s@mdbootstrap.com</p>
+            <p>{props.myInfo.teacher_email}</p>
           </div>
           <hr className='mb-0' />
         </div>
         <div id='scrollContainer'>
           <ul className='sidenav-menu'>
             <li className='sidenav-item'>
-              <a className='sidenav-link' href='/'>
+              <Link className='sidenav-link' to='/teacher'>
                 <i className='fas fa-envelope fa-fw mr-3'></i>Inbox
-              </a>
+              </Link>
             </li>
             <li className='sidenav-item'>
-              <a className='sidenav-link'>
+              <Link className='sidenav-link' to='/teacher'>
                 <i className='fas fa-paper-plane fa-fw mr-3'></i>Outbox
-              </a>
+              </Link>
             </li>
             <li className='sidenav-item'>
-              <a className='sidenav-link'>
-                <i className='fas fa-address-book fa-fw mr-3'></i>Contacts
-              </a>
-              <ul className='sidenav-collapse'>
-                <li className='sidenav-item'>
-                  <a className='sidenav-link'>Family</a>
-                </li>
-                <li className='sidenav-item'>
-                  <a
-                    className='sidenav-link'
-                    href='/previews/mdb-ui-kit/sidenav/2.html'
-                  >
-                    Friends
-                  </a>
-                </li>
-                <li className='sidenav-item'>
-                  <a className='sidenav-link'>Work</a>
-                </li>
-              </ul>
+              <Link className='sidenav-link' to='/teacher/classes'>
+                <i className='fas fa-paper-plane fa-fw mr-3'></i>Classes
+              </Link>
             </li>
             <li className='sidenav-item'>
-              <a className='sidenav-link'>
-                <i className='fas fa-file fa-fw mr-3'></i>Drafts
-              </a>
+              <Link className='sidenav-link' to='/teacher/assignments'>
+                <i className='fas fa-paper-plane fa-fw mr-3'></i>Assignments
+              </Link>
             </li>
             <li className='sidenav-item'>
-              <a className='sidenav-link'>
-                <i className='fas fa-heart fa-fw mr-3'></i>Favourites
-              </a>
+              <Link className='sidenav-link' to='/teacher/grades'>
+                <i className='fas fa-paper-plane fa-fw mr-3'></i>Grades
+              </Link>
             </li>
             <li className='sidenav-item'>
-              <a className='sidenav-link'>
-                <i className='fas fa-star fa-fw mr-3'></i>Starred
-              </a>
-            </li>
-            <li className='sidenav-item'>
-              <a className='sidenav-link'>
-                <i className='fas fa-trash fa-fw mr-3'></i>Trash
-              </a>
-            </li>
-            <li className='sidenav-item'>
-              <a className='sidenav-link'>
-                <i className='fas fa-ban fa-fw mr-3'></i>Spam
-              </a>
-            </li>
-            <li className='sidenav-item'>
-              <a className='sidenav-link'>
-                <i className='fas fa-tag fa-fw mr-3'></i>Categories
-              </a>
-              <ul className='sidenav-collapse'>
-                <li className='sidenav-item'>
-                  <a className='sidenav-link'>Social</a>
-                </li>
-                <li className='sidenav-item'>
-                  <a className='sidenav-link'>Notifications</a>
-                </li>
-                <li className='sidenav-item'>
-                  <a className='sidenav-link'>Recent</a>
-                </li>
-                <li className='sidenav-item'>
-                  <a className='sidenav-link'>Uploads</a>
-                </li>
-                <li className='sidenav-item'>
-                  <a className='sidenav-link'>Backups</a>
-                </li>
-                <li className='sidenav-item'>
-                  <a className='sidenav-link'>Offers</a>
-                </li>
-              </ul>
-            </li>
-            <li className='sidenav-item'>
-              <a className='sidenav-link'>
-                <i className='fas fa-sticky-note fa-fw mr-3'></i>Notes
-              </a>
-            </li>
-            <li className='sidenav-item'>
-              <a className='sidenav-link'>
-                <i className='fas fa-user-circle fa-fw mr-3'></i>Personal
-              </a>
-            </li>
-            <li className='sidenav-item'>
-              <a className='sidenav-link'>
-                <i className='fas fa-ellipsis-h fa-fw mr-3'></i>More
-              </a>
+              <Link className='sidenav-link' to='/teacher/students'>
+                <i className='fas fa-user fa-fw mr-3'></i>Students
+              </Link>
             </li>
           </ul>
           <hr className='m-0' />
           <ul className='sidenav-menu'>
             <li className='sidenav-item'>
-              <a className='sidenav-link'>
+              <Link className='sidenav-link' to='/teacher'>
                 <i className='fas fa-cogs fa-fw mr-3'></i>Settings
-              </a>
+              </Link>
             </li>
             <li className='sidenav-item'>
-              <a className='sidenav-link'>
+              <Link className='sidenav-link' to='/teacher'>
                 <i className='fas fa-user fa-fw mr-3'></i>Profile
-              </a>
+              </Link>
             </li>
             <li className='sidenav-item'>
-              <a className='sidenav-link'>
-                <i className='fas fa-shield-alt fa-fw mr-3'></i>Privacy
-              </a>
+              <Link className='sidenav-link' to='/teacher/admin'>
+                <i className='fas fa-shield-alt fa-fw mr-3'></i>Admin Portal
+              </Link>
             </li>
             <li className='sidenav-item'>
-              <a
+              <Link
                 className='sidenav-link'
                 onClick={(event) => props.logout(event)}
               >
                 <i className='fas fa-user-astronaut fa-fw mr-3'></i>Log out
-              </a>
+              </Link>
             </li>
           </ul>
-        </div>
-        <div className='text-center'>
-          <hr className='mb-4 mt-0' />
-          <p>MDBootstrap.com</p>
         </div>
       </div>
     </Fragment>

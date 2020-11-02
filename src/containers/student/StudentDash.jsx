@@ -15,7 +15,7 @@ const StudentDash = ({ toogleAuth }) => {
   const getStudentInfo = async () => {
     try {
       const res = await fetch(studentDashboard, {
-        method: "POST",
+        method: "GET",
         headers: { token: localStorage.token },
       });
 

@@ -24,16 +24,34 @@ body {
   height: 100vh;
 }
 
-/* ===========================================================
+.home-bottom-row,
+.home-top-row {
+}
+.home-top-row {
+  margin-top: 6rem;
+}
+.home-bottom-row {
+  margin-top: 6rem;
+}
+.sidenav-color {
+  background-color: #bbbfca;
+  top: 0;
+  left: 0;
+  transform: translateX(-100%);
+  position: fixed;
+  z-index: 1035;
 
-
-Bootstrap
-
-
-
-
-====================================================*/
-
+  overflow: hidden;
+  width: 240px;
+  height: 100vh;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.05), 0 2px 10px 0 rgba(0, 0, 0, 0.05);
+  transform: translateX(0);
+  box-sizing: border-box;
+}
+.card {
+  background-color: #495464;
+}
+/* boostrap */
 /*!
  * MDB5
  *   Version: PRO 2.0.0
@@ -65,13 +83,13 @@ Bootstrap
   --bs-cyan: #0dcaf0;
   --bs-gray: #757575;
   --bs-gray-dark: #4f4f4f;
-  --bs-primary: #1266f1;
-  --bs-secondary: #b23cfd;
+  --bs-primary: #495464;
+  --bs-secondary: #bbbfca;
   --bs-success: #00b74a;
   --bs-info: #39c0ed;
   --bs-warning: #ffa900;
   --bs-danger: #f93154;
-  --bs-light: #fbfbfb;
+  --bs-light: #bbbfca;
   --bs-dark: #262626;
   --bs-white: #fff;
   --bs-black: #000;
@@ -4455,7 +4473,7 @@ fieldset:disabled .btn {
   flex-direction: column;
   min-width: 0;
   word-wrap: break-word;
-  background-color: #fff;
+  background-color: #bbbfca;
   background-clip: border-box;
   border: 1px solid rgba(0, 0, 0, 0.125);
   border-radius: 0.25rem;
@@ -15643,11 +15661,11 @@ fieldset:disabled .btn-group-vertical {
   color: #fff;
 }
 .lightbox-gallery .lightbox-gallery-toolbar button:before {
-  font-family: Font Awesome\5 Free;
+  font-family: Font awesome\5 Free;
   font-weight: 900;
 }
 .lightbox-gallery .lightbox-gallery-toolbar button.fontawesome-pro:before {
-  font-family: Font Awesome\5 Pro;
+  font-family: Font awesome\5 Pro;
 }
 .lightbox-gallery
   .lightbox-gallery-toolbar
@@ -15744,12 +15762,12 @@ fieldset:disabled .btn-group-vertical {
   color: #fff;
 }
 .lightbox-gallery .lightbox-gallery-arrow-right button:before {
-  font-family: Font Awesome\5 Free;
+  font-family: Font awesome\5 Free;
   font-weight: 900;
   content: "\f061";
 }
 .lightbox-gallery .lightbox-gallery-arrow-right button.fontawesome-pro:before {
-  font-family: Font Awesome\5 Pro;
+  font-family: Font awesome\5 Pro;
 }
 .lightbox-gallery .lightbox-gallery-arrow-left {
   position: fixed;
@@ -15782,12 +15800,12 @@ fieldset:disabled .btn-group-vertical {
   color: #fff;
 }
 .lightbox-gallery .lightbox-gallery-arrow-left button:before {
-  font-family: Font Awesome\5 Free;
+  font-family: Font awesome\5 Free;
   font-weight: 900;
   content: "\f060";
 }
 .lightbox-gallery .lightbox-gallery-arrow-left button.fontawesome-pro:before {
-  font-family: Font Awesome\5 Pro;
+  font-family: Font awesome\5 Pro;
 }
 .lightbox-gallery .lightbox-gallery-caption-wrapper {
   position: fixed;
