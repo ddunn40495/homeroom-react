@@ -35,84 +35,24 @@ const TeacherHome = (props) => {
 
   return (
     <Fragment>
-      <div className='row'>
-        <div className='col home-top-row'>
-          <div class='card'>
-            <div class='card-body'>
-              <h4 class='card-title'>
-                <a>{props.myInfo.teacher_first_name}</a>
-              </h4>
-              <p class='card-text'>{props.firstname}</p>
-              <a href='#' class='btn btn-primary'>
-                Button
-              </a>
+      <main>
+        <div class='main-div'>
+          <div class='row main-row'>
+            <div class='col s12 m6' id='d1'>
+              Pretty Date and Time and Weather Div
+            </div>
+            <div class='col s12 m6' id='d2'>
+              Notifications
+            </div>
+            <div class='col s12 m6' id='d3'>
+              Table of students with good grades
+            </div>
+            <div class='col s12 m6' id='d4'>
+              Table of students with most missed assignments
             </div>
           </div>
         </div>
-        <div className='col home-top-row'>
-          <div class='card'>
-            <div class='card-body'>
-              <h4 class='card-title'>
-                <a>Card title</a>
-              </h4>
-              <p class='card-text'>
-                PICK A FRAMEWORK SO THE DIVS WILL WORK!!!!!!!!!!!!!!
-              </p>
-              <a href='#' class='btn btn-primary'>
-                Button
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div className='row'>
-        <div className='col home-bottom-row'>
-          <div className='row'>
-            <div className='col'>
-              <div class='card'>
-                <div class='card-body'>
-                  <select class='select'></select>
-                  <label class='form-label select-label'></label>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className='row'>
-            <div className='col'>
-              <div class='card'>
-                <div class='card-header text-center py-3 bg-light border-0'>
-                  <strong>Classes</strong>
-                </div>
-                <div class='card-body'>
-                  <div class='table-responsive'>
-                    <table class='table table-hover text-nowrap'>
-                      <thead>
-                        <tr>
-                          <th scope='col'></th>
-                          <th scope='col'>Course Name</th>
-                          <th scope='col'>Class name</th>
-
-                          <th scope='col'>Subject</th>
-                          <th scope='col'>Teacher</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          {/* <th>{allStudents[0].student_first_name}</th>
-                          <td>{allStudents[0].student_email}</td>
-                          <td>{allStudents[0].student_user_name}</td>
-                          <td>{allStudents[0].student_grade_level}</td> */}
-                        </tr>
-                      </tbody>
-                    </table>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className='col home-bottom-row'></div>
-      </div>
+      </main>
     </Fragment>
   );
 };
