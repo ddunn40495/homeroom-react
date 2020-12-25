@@ -39,16 +39,68 @@ const TeacherHome = (props) => {
         <div class='main-div'>
           <div class='row main-row'>
             <div class='col s12 m6' id='d1'>
-              Pretty Date and Time and Weather Div
+              {/* Card-Start */}
+              <div class='card phone-card-teach-dash'>
+                <div class='card-content '>
+                  <span class='card-title'>Pretty Time and Weather Div</span>
+                  <p>
+                    I am a very simple card. I am good at containing small bits
+                    of information. I am convenient because I require little
+                    markup to use effectively.
+                  </p>
+                </div>
+                <div class='card-action'></div>
+              </div>
+              {/* Card -End */}
             </div>
             <div class='col s12 m6' id='d2'>
-              Notifications
+              {/* Card-Start */}
+              <div class='card phone-card-teach-dash'>
+                <div class='card-content '>
+                  <span class='card-title'>Notifications</span>
+                  <p>
+                    I am a very simple card. I am good at containing small bits
+                    of information. I am convenient because I require little
+                    markup to use effectively.
+                  </p>
+                </div>
+                <div class='card-action'></div>
+              </div>
+              {/* Card -End */}
             </div>
             <div class='col s12 m6' id='d3'>
-              Table of students with good grades
+              {/* Card-Start */}
+              <div class='card phone-card-teach-dash'>
+                <div class='card-content '>
+                  <span class='card-title'>
+                    Table of students with good grades
+                  </span>
+                  <p>
+                    I am a very simple card. I am good at containing small bits
+                    of information. I am convenient because I require little
+                    markup to use effectively.
+                  </p>
+                </div>
+                <div class='card-action'></div>
+              </div>
+              {/* Card -End */}
             </div>
             <div class='col s12 m6' id='d4'>
-              Table of students with most missed assignments
+              {/* Card-Start */}
+              <div class='card phone-card-teach-dash'>
+                <div class='card-content '>
+                  <span class='card-title'>
+                    Table of students with most missed assignments
+                  </span>
+                  <p>
+                    I am a very simple card. I am good at containing small bits
+                    of information. I am convenient because I require little
+                    markup to use effectively.
+                  </p>
+                </div>
+                <div class='card-action'></div>
+              </div>
+              {/* Card -End */}
             </div>
           </div>
         </div>

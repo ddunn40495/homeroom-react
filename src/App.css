@@ -11,11 +11,17 @@ footer {
     padding-left: 0;
   }
 }
-
+.bkg-color {
+  /* height: 100vh; */
+  background-color: #bbbfca;
+}
+/* Phone CSS */
 .main-row {
-  height: 100vh;
-  background-color: yellow;
   padding: 3rem;
+}
+
+.phone-card-teach-dash {
+  background-color: #e8e8e8;
 }
 
 #d1,
@@ -23,20 +29,18 @@ footer {
 #d3,
 #d4 {
   height: 40vh;
+  background-color: #495464;
+  margin-bottom: 3rem;
 }
 
 #d1 {
-  background-color: tomato;
 }
 
 #d2 {
-  background-color: violet;
 }
 
 #d3 {
-  background-color: wheat;
 }
 
 #d4 {
-  background-color: blue;
 }

@@ -50,9 +50,10 @@ const TeacherSideNav = (props) => {
             <Link onClick={(event) => props.logout(event)}>Log Out</Link>
           </li>
         </ul>
-        <a data-target='slide-out' class='sidenav-trigger'>
+        {/* <a >
           <i class='material-icons'>menu</i>
-        </a>
+        </a> */}
+        <button data-target='slide-out' class='sidenav-trigger'></button>
       </header>
     </Fragment>
   );
